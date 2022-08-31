@@ -1,3 +1,6 @@
+# BETSY ALTENBURGER
+# hjc6uh@virginia.edu
+
 from z3 import *
 
 s = Solver()
