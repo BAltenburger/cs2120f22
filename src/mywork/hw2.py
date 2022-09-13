@@ -36,6 +36,65 @@ def hw2():
     s.add(Not(C3))
     # I believe it is valid
     print_result(s,3)
+    
+    s.reset()
+    # 4. X ∧ Y ⊢ Y
+    # As proposition in PL: X /\ Y --> Y
+    C4 = Implies(And(X,Y), Y)
+    s.add(Not(C4))
+    # I believe it is valid
+    print_result(s, 4)
+    
+    s.reset()
+    # 5. ¬¬X ⊢ X             
+    # As propostion in PL: ~~X --> X
+    C5 = Implies(Not(Not(X)), X)
+    # I believe it is valid
+    s.add(Not(C5))
+    print_result(s, 5)
+    
+    s.reset()
+    #6. ¬(X ∧ ¬X)  
+    # As proposition in PL: ~(X /\ ~X)
+    C6 = Not(And(X, Not(X)))
+    # I believe it is valid
+    s.add(Not(C6))
+    print_result(s,6)
+    
+    s.reset()
+    # 7. X ⊢ X ∨ Y
+    # As propostion in PL: X --> X \/ Y
+    C7 = Implies(X, Or(X,Y))
+    # I believe this is valid
+    s.add(Not(C7))
+    print_result(s,7)
+
+    s.reset()
+    # 8. Y ⊢ X ∨ Y  
+    # As proposition in PL: Y --> X \/ Y
+    C8 = Implies(Y, Or(X,Y))
+    # I believe this is valid
+    s.add(Not(C8))
+    print_result(s, 8)
+    
+    s.reset()
+    # 9. X → Y, ¬X ⊢ ¬ Y   
+    # As proposition in PL: (X --> Y) /\ (~X --> ~Y)
+    C9 = And(Implies(X,Y), Implies(Not(X), Not(Y)))
+    # I believe this is not valid
+    s.add(Not(C9))
+    print_result(s, 9)   
+    
+    s.reset()
+    # 10. X → Y, Y → X ⊢ X ↔ Y  
+    # As propostion in PL: X--> y /\ Y --> X --> X <-->Y
+
+    
+
+
+
+    
+
 
 
 
