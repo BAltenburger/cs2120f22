@@ -21,7 +21,23 @@ def hw2():
     # I believe it's not valid
     print_result(s, 1)
     
-    # 2, 
+    s.reset()
+    # 2. X, Y ⊢ X ∧ Y      
+    # As propostion in PL: X /\ Y --> X /\ Y
+    C2 = Implies(And(X,Y), (And(X,Y)))
+    s.add(Not(C2))
+    # I believe it's valid
+    print_result(s,2)
+    
+    s.reset()
+    #3. X ∧ Y ⊢ X
+    # As propostion in PL: X /\ Y --> X
+    C3 = Implies(And(X,Y), X)
+    s.add(Not(C3))
+    # I believe it is valid
+    print_result(s,3)
+
+
 
 def print_result(s, question_number):
     if (s.check() == unsat):
