@@ -169,23 +169,17 @@ def hw2():
     s.reset()
     # 20. ¬(X ∧ Y) ↔ ¬X ∨ ¬Y    
     # As proposition in PL: ~(X /\ Y) <--> ~X \/ ~Y
-
-
-
-
-
-
-
-
-
-    
-
-
-
+    C20 = (Not(And(X,Y)) == Or(Not(X, Y)))
+    # I think this is not valid
+    s.add(Not(C20))
+    print_result(s,20)
 
 def print_result(s, question_number):
     if (s.check() == unsat):
         print("C" + str(question_number)+ " is valid.")
     else:
         print("C" + str(question_number) + " is not valid. Here is a counter-example: ", s.model())
+        
+        
+        
 hw2()
