@@ -169,8 +169,8 @@ def hw2():
     s.reset()
     # 20. ¬(X ∧ Y) ↔ ¬X ∨ ¬Y    
     # As proposition in PL: ~(X /\ Y) <--> ~X \/ ~Y
-    C20 = (Not(And(X,Y)) == Or(Not(X, Y)))
-    # I think this is not valid
+    C20 = (Not(And(X,Y)) == Or(Not(X), Not(Y)))
+    # I think this is valid
     s.add(Not(C20))
     print_result(s,20)
 
