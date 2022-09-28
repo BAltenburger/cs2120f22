@@ -53,11 +53,14 @@ natural, human, terms.
 
 ANSWER HERE:
 -/
+
+
+/-
 Suppose Socrates is of the type Person. There is a one arugment proposition
 called isMortal that takes an arugment of type Person. The statement everyoneIsMortal
 says that for all p of type Person, the propostion isMortal p is true. As stated before, 
 Socrates is a person; therefore, according to the for all elimiation rule Socrates is mortal.
-
+-/
 
 /- #2: English to Logic 
 Formally model this natural-language "logic story" in Lean, using
@@ -76,20 +79,20 @@ in blanks to complete this task.
 -/
 
 variable Person : Type
-variable Likes : Person, Person       -- a predicate with two Person arguments
-variable Jealous : Person, Person     -- same thing here  
+variable Likes : Person → Person  → Prop    -- a predicate with two Person arguments
+variable Jealous : Person → Person  → Prop    -- same thing here  
 variable Triangle :       -- note definition extends to next line
-  ∀ (p1 p2 p3 : Person), Likes(p1 p2), Likes(p1 p3)
-variables ed hannah mel : (ed hannah mel: Person)
-variable likes_ed_hannah : Likes(ed hannah)
-variable likes_hannah_mel : Likes(hannah mel)
+  ∀ (p1 p2 p3 : Person), Likes p1 p2 → Likes p2 p3 → Jealous p1 p3
+variables ed hannah mel : Person
+variable likes_ed_hannah : Likes ed hannah
+variable likes_hannah_mel : Likes hannah mel
 -- Finally write and use #check to check an expression that proves that ed is 
 -- jealous of mel.
 -- To ANSWER, fill in the _ with your expression. 
 -- HINT "Apply" what you know.
 
 
-#check Jealous(ed mel)
+#check Triangle ed hannah mel 
 
 
 /- #3: Proofing a propositions involving ∀ and ∨
@@ -102,11 +105,12 @@ long proof. Keep it concise. Identiy the inference rules you use.
 
 -/
 
-For all propoistions P and Q, assume that P or Q is true. 
+/-
+For all propositions P and Q, assume that P or Q is true. 
 By the and elimination rule, if P and Q is true then P is true.
 By the or introduction rule, if P is true then P or Q is true.
 Therefore, it has been proved that if P and Q is true, then P and Q is true.
-
+-/
 
 /- 
 Model the following logic story formally. Everyone knows someone who 
@@ -120,8 +124,10 @@ You may (and probably should) break up your expression over several
 lines, using line breaks and indentation to make the answer readable.
 -/
 
-variable Person : Type
 variable Knows : Person → Person → Prop
 def answer : Prop := 
-    ∀ (someone everyone:Person), Knows(someone, everyone) → Knows(everyone, someone)
+    ∀ (p: Person), 
+    ∃(a b c:Person), Knows p a →  Knows a b →  Knows b c
+
+#check answer
 
