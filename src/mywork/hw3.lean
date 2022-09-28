@@ -53,6 +53,10 @@ natural, human, terms.
 
 ANSWER HERE:
 -/
+Suppose Socrates is of the type Person. There is a one arugment proposition
+called isMortal that takes an arugment of type Person. The statement everyoneIsMortal
+says that for all p of type Person, the propostion isMortal p is true. As stated before, 
+Socrates is a person; therefore, according to the for all elimiation rule Socrates is mortal.
 
 
 /- #2: English to Logic 
@@ -71,22 +75,21 @@ To do so, uncomment the following block of expressions then fill
 in blanks to complete this task.
 -/
 
-/- Uncomment this block to answer the question
 variable Person : Type
-variable Likes : _        -- a predicate with two Person arguments
-variable Jealous : _      -- same thing here  
+variable Likes : Person, Person       -- a predicate with two Person arguments
+variable Jealous : Person, Person     -- same thing here  
 variable Triangle :       -- note definition extends to next line
-  ∀ (p1 p2 p3 : Person), _  
-variables ed hannah mel : _
-variable likes_ed_hannah : _
-variable likes_hannah_mel : _
+  ∀ (p1 p2 p3 : Person), Likes(p1 p2), Likes(p1 p3)
+variables ed hannah mel : (ed hannah mel: Person)
+variable likes_ed_hannah : Likes(ed hannah)
+variable likes_hannah_mel : Likes(hannah mel)
 -- Finally write and use #check to check an expression that proves that ed is 
 -- jealous of mel.
 -- To ANSWER, fill in the _ with your expression. 
 -- HINT "Apply" what you know.
--/
 
-#check _
+
+#check Jealous(ed mel)
 
 
 /- #3: Proofing a propositions involving ∀ and ∨
@@ -98,6 +101,11 @@ Do read that proposition carefully, please. You don't need to write a
 long proof. Keep it concise. Identiy the inference rules you use.
 
 -/
+
+For all propoistions P and Q, assume that P or Q is true. 
+By the and elimination rule, if P and Q is true then P is true.
+By the or introduction rule, if P is true then P or Q is true.
+Therefore, it has been proved that if P and Q is true, then P and Q is true.
 
 
 /- 
@@ -115,4 +123,5 @@ lines, using line breaks and indentation to make the answer readable.
 variable Person : Type
 variable Knows : Person → Person → Prop
 def answer : Prop := 
-    _
+    ∀ (someone everyone:Person), Knows(someone, everyone) → Knows(everyone, someone)
+
