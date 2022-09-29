@@ -125,9 +125,9 @@ lines, using line breaks and indentation to make the answer readable.
 -/
 
 variable Knows : Person → Person → Prop
+variable KnowsEveryone: Person → Person → Prop
 def answer : Prop := 
     ∀ (p: Person), 
-    ∃(a b c:Person), Knows p a →  Knows a b →  Knows b c
+    ∃(a b:Person), Knows a p → Knows a b → KnowsEveryone b p
 
 #check answer
-
