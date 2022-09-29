@@ -141,13 +141,23 @@ want to prove Z. To be able to prove Z it will *suffice* to
 prove ______; for then you will need only to apply the ______
 rule to deduce that Z is true.
 
+We will either need to prove X or Y
+Or elimination
+We use the arrow elimination to apply the values we proved
+
 Suppose you know that (X → Z), (Y → Z), and Z are all true.
 Is it necessarily that case that (X ∨ Y) is also true? Defend
 you answer.
 
+It must be the case
+If Z is true, then Y and X must be true
+Then Y or X must be true
+
 Suppose it's raining OR the sprinkler is running, and that in
 either case the grass is wet. Is the grass wet? How would you
 prove it?
+
+Assuming the predicate, the grass is wet. We would prove this with or elimination
 -/
 
 
@@ -372,11 +382,26 @@ and I want to prove (7 is beautiful : true). Prove it.
 Name the inference rule and identify the arguments you
 give it to prove it.
 
+Provide 7
+Provide a statment that 7 is a natural number
+Use arrow elimination to prove that 7 is beautiful
+
 Constructive logic. Suppose I have a proof, pf, that every 
 natural number is beautiful (∀ (n : ℕ), beautiful n), and I 
 need a proof that 7 is beautiful. How can I get the proof 
 I need? Answer in both English and with a Lean expression.
 
+Given you have a proof that 7 is a natural number
+
+-/
+variable number: Type
+variable beautiful: number → Prop
+variable t1: ∀ (n: number ), beautiful n → Prop
+variable seven : number
+#check t1 seven
+
+
+/-
 Formalize this story: All people are mortal, and Plato 
 is a person, therefore Plato is Mortal.
 -/
