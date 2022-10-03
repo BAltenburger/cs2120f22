@@ -1,4 +1,8 @@
 /-
+Betsy Altenburger
+hjc6uh
+
+
 CS 2120 HOMEWORK #3
 OUT: SUN, SEP 25
 DUE: MON, OCT 3
@@ -125,9 +129,9 @@ lines, using line breaks and indentation to make the answer readable.
 -/
 
 variable Knows : Person → Person → Prop
-variable KnowsEveryone: Person → Person → Prop
 def answer : Prop := 
     ∀ (p: Person), 
-    ∃(a b:Person), Knows a p → Knows a b → KnowsEveryone b p
+    ∃(a b:Person), Knows p a → Knows a b → 
+    ∀(p1: Person), Knows b p1
 
 #check answer
