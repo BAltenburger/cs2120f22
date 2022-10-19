@@ -394,6 +394,16 @@ I need? Answer in both English and with a Lean expression.
 Given you have a proof that 7 is a natural number
 
 -/
+variable num: Type
+variable beautiful: num → Prop
+variable seven : num 
+variable theorm1:  ∀ (n: num), beautiful n → Prop
+#check theorm1 seven
+
+
+
+
+
 variable number: Type
 variable beautiful: number → Prop
 variable t1: ∀ (n: number ), beautiful n → Prop
