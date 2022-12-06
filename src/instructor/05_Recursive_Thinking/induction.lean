@@ -427,7 +427,7 @@ number, n.
 -/
 
 def sum_to : ℕ → ℕ 
-| 0 := 0
+| zero := zero 
 | (succ n') := (succ n') + sum_to n'
 
 example : sum_to 0 = 0 := rfl
